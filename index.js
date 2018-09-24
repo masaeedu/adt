@@ -12,7 +12,7 @@ const match = cases => ({ label, values }) => uncurry(cases[label])(values)
 
 const create = def => {
   const constructors = mapWithKey(label => types => curry(types.length)(values => ({ label, values })))(def)
-  return { ...constructors, def }
+  return { ...constructors, match, def }
 }
 
 module.exports = { match, create, adt: create }
