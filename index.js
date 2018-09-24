@@ -11,7 +11,9 @@ const mapWithKey = f => o =>
 const match = cases => ({ label, values }) => uncurry(cases[label])(values)
 
 const create = def => {
-  const constructors = mapWithKey(label => types => curry(types.length)(values => ({ label, values })))(def)
+  const constructors = mapWithKey(label => types =>
+    curry(types.length)(values => ({ label, values }))
+  )(def)
   return { ...constructors, match, def }
 }
 
