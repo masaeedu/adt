@@ -1,10 +1,15 @@
 {
   "name": "@masaeedu/adt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Asad Saeeduddin <masaeedu@gmail.com>",
   "license": "MIT",
-  "scripts": { "test": "ava" },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava"
+  },
   "devDependencies": {
     "ava": "^0.25.0"
   }
