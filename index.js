@@ -15,4 +15,4 @@ const create = def => {
   return { ...constructors, def }
 }
 
-module.exports = { match, create }
+module.exports = { match, create, adt: create }
