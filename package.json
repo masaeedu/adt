@@ -1,0 +1,7 @@
+{
+  "name": "@masaeedu/adt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Asad Saeeduddin <masaeedu@gmail.com>",
+  "license": "MIT"
+}
