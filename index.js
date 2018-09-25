@@ -1,19 +1,12 @@
-const uncurry = f => args => args.reduce((p, c) => p(c), f)
+const { Fn, Obj } = require("./utils")
 
-const curry = n => f => {
-  const rec = a => acc => (a === 0 ? f(acc) : x => rec(a - 1)([...acc, x]))
-  return rec(n)([])
-}
-
-const mapWithKey = f => o =>
-  Object.keys(o).reduce((p, k) => ({ ...p, [k]: f(k)(o[k]) }), {})
-
-const match = cases => ({ label, values }) => uncurry(cases[label])(values)
+const match = cases => ({ label, values }) => Fn.uncurry(cases[label])(values)
 
 const create = def => {
-  const constructors = mapWithKey(label => types =>
-    curry(types.length)(values => ({ label, values }))
-  )(def)
+  const createConstructor = label => types =>
+    Fn.curry(types.length)(values => ({ label, values }))
+  const constructors = Obj.mapWithKey(createConstructor)(def)
+
   return { ...constructors, match, def }
 }
 
