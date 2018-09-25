@@ -9,7 +9,7 @@ A simple library for defining ADTs.
 ```js
 import { adt } from "@masaeedu/adt"
 
-const Either = adt({ Left: ["a"], Right: ["b"] }) // This library only uses the type list for arity, type checking can be built on top
+const Either = adt({ Left: ["a"], Right: ["b"] })
 const { Left, Right } = Either
 
 const map = f => Either.match({ Left, Right: x => Right(f(x)) })
@@ -18,6 +18,8 @@ const double = x => x * 2
 map(double)(Left("Whoops!")) // => Left("Whoops!")
 map(double)(Right(21)) // => Right(42)
 ```
+
+The type list is only used to inform arity of the constructor. Additional features like type checking or generic serialization can transparently be built on top by abstracting over the input definition (exposed as `adt(D).def == D`).
 
 ## Properties
 
