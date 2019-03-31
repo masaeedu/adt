@@ -3,11 +3,22 @@ const { Fn, Obj } = require("./utils")
 const otherwise = Symbol("@masaeedu/adt/otherwise")
 
 const missing = cases => v => {
-  const vj = JSON.stringify(v)
-  const cj = JSON.stringify(cases)
+  const vj = JSON.stringify(v, null, 2)
+  const cj = JSON.stringify(cases, null, 2)
   const msg = `
-Failed to match ${vj}.
-No matching handler in ${cj} and no default handler.`
+Failed to match:
+
+\`\`\`
+${vj}
+\`\`\`
+
+No matching handler in:
+
+\`\`\`
+${cj}
+\`\`\`
+
+and no default handler.`
 
   throw new Error(msg.trim())
 }
