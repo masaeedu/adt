@@ -10,10 +10,12 @@ const Fn = (() => {
 })()
 
 const Obj = (() => {
+  const hasProp = p => o => Object.prototype.hasOwnProperty.call(o, p)
+
   const mapWithKey = f => o =>
     Object.keys(o).reduce((p, k) => ({ ...p, [k]: f(k)(o[k]) }), {})
 
-  return { mapWithKey }
+  return { hasProp, mapWithKey }
 })()
 
 module.exports = { Fn, Obj }

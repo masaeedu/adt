@@ -28,7 +28,7 @@ const match = cases => {
 
   return v => {
     const { label, values } = v
-    return cases.hasOwnProperty(label)
+    return Obj.hasProp(label)(cases)
       ? Fn.uncurry(cases[label])(values)
       : defaultHandler(v)
   }
